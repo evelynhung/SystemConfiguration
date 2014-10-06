@@ -303,4 +303,11 @@ function cd ()
     fi
 }
 
+# Usage: .. [level]
+# Go up $level directories
+function ..() {
+    num=$1
+    test $1 || num=1
+    cd $(seq $num|xargs printf '../%.0s')
+}
 
