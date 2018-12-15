@@ -73,6 +73,20 @@ function chpwd_profile_default() {
     export LANG=en_US.UTF-8
 }
 
+OS=$(uname)             # for resolving pesky os differing switches
+case $OS in
+    Darwin|*BSD)
+        export CLICOLOR=1
+        export LSCOLORS=ExFxCxDxBxegedabagacad
+        alias ls='ls -G'
+        # By installing Macports: GNU coreutils, alias as Linux-way
+        #alias ls='ls -N --color=auto --time-style=long-iso'
+        ;;
+    Linux)
+        alias ls='ls -N --color=auto --time-style=long-iso'
+        ;;
+esac
+
 # alias
 alias ll='ls -al'                   # long list format
 alias cp='cp -i'
